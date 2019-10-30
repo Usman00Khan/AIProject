@@ -1,0 +1,428 @@
+
+ ! version = 2.0
+ ! var currenttopic = none
+ > begin
+  // If we don't know their name, set the new_user topic and continue.
+  + request
+  * <get met> == undefined => <set met=true>{topic=new_user}{ok}
+  - {ok}
+
+< begin
+
+> topic new_user
+
+  + *
+  - What is your name?{topic=asked_name}
+
+< topic
+
+> topic asked_name
+
+    + #
+  - Your name is a number? 
+
+  + *
+  - I only want your first name.
+
+  + _
+  - <set name=<formal>>Nice to meet you, <get name>! </br>\n
+  ^  Let's start with your technical test </br>\n
+  ^ Say ready if you are <bot currenttopic>.{topic=ready}
+
+< topic
+
+> topic ready
+  + ready [*]
+  - <bot currenttopic=tech>1) A program P reads in 500 integers in the range [0..100] exepresenting the scores of 500 students. It then prints the frequency of each score above 50. What would be the best way for P to store the frequencies? </br>\n 
+    ^ 1) An array of 50 numbers </br>\n
+    ^ 2) An array of 100 numbers </br>\n
+    ^ 3) An array of 500 numbers </br>\n
+    ^ 4) A dynamically allocated array of 550 numbers </br>\n
+  ^  reply just the choice.{topic=technicaltest1}
+
+  + [*] not ready [*]
+  - still waiting. Say ready.
+
+  + *
+  - Say ready.
+
+
+< topic
+
+> topic technicaltest1
+
+    + #
+  * <star> >= 5 => Invalid Response
+  * <star> < 1 => Invalid Response
+  - 2) Which of the following operations is not O(1) for an array of sorted data. You may assume that array elements are distinct.\n
+    ^ 1) Find the ith largest element<\br>\n
+    ^ 2) Delete an element </br>\n
+    ^ 3) Find the ith smallest element </br>\n
+    ^ 4) All of the above </br>\n
+  ^  reply just the choice.{topic=technicaltest2}
+
+  + *
+  - I didn't get you. Can you use a number instead?
+
+
+< topic
+
+> topic technicaltest2
+
+    + #
+  * <star> >= 5 => Invalid Response
+  * <star> <= 0 => Invalid Response
+  - 3) Which one of the following is an application of Stack Data Structure? </br>\n
+    ^ 1) Managing function calls </br>\n
+    ^ 2) The stock span problem </br>\n
+    ^ 3) Arithmetic expression evaluation </br>\n
+    ^ 4) All of the above </br>\n
+  ^  reply just the choice.{topic=technicaltest3}
+
+  + *
+  - I didn't get you. Can you use a number instead?
+
+
+< topic
+
+> topic technicaltest3
+
+    + #
+  * <star> >= 5 => Invalid Response
+  * <star> <= 0 => Invalid Response
+  - 4) Which of the following is true about linked list implementation of stack? </br>\n
+    ^ 1) In push operation, if new nodes are inserted at the beginning of linked list, then in pop operation, nodes must be removed from end. </br>\n
+    ^ 2) In push operation, if new nodes are inserted at the end, then in pop operation, nodes must be removed from the beginning. </br>\n
+    ^ 3) Both of the above </br>\n
+    ^ 4) None of the above </br>\n
+  ^  reply just the choice.{topic=technicaltest4}
+
+  + *
+  - I didn't get you. Can you use a number instead?
+
+
+< topic
+
+> topic technicaltest4
+
+    + #
+  * <star> >= 5 => Invalid Response
+  * <star> <= 0 => Invalid Response
+  - 5) Which one of the following is an application of Queue Data Structure? </br>\n
+    ^ 1) When a resource is shared among multiple consumers. </br>\n
+    ^ 2) When data is transferred asynchronously (data not necessarily received at same rate as sent) between two processes </br>\n
+    ^ 3) Load Balancing </br>\n
+    ^ 4) All of the above </br>\n
+  ^  reply just the choice.{topic=technicaltest5}
+
+  + *
+  - I didn't get you. Can you use a number instead?
+
+
+< topic
+
+> topic technicaltest5
+
+    + #
+  * <star> >= 5 => Invalid Response
+  * <star> <= 0 => Invalid Response
+  - 6) Suppose a circular queue of capacity (n – 1) elements is implemented with an array of n elements. Assume that the insertion and deletion operation are carried out using REAR and FRONT as array index variables, respectively. Initially, REAR = FRONT = 0. The conditions to detect queue full and queue empty are </br>\n
+    ^ 1) Full: (REAR+1) mod n == FRONT, empty: REAR == FRONT </br>\n
+    ^ 2) Full: (REAR+1) mod n == FRONT, empty: (FRONT+1) mod n == REAR </br>\n
+    ^ 3) Full: REAR == FRONT, empty: (REAR+1) mod n == FRONT </br>\n
+    ^ 4) Full: (FRONT+1) mod n == REAR, empty: REAR == FRONT </br>\n
+  ^  reply just the choice.{topic=technicaltest6}
+
+  + *
+  - I didn't get you. Can you use a number instead?
+
+
+< topic
+
+> topic technicaltest6
+
+    + #
+  * <star> >= 5 => Invalid Response
+  * <star> <= 0 => Invalid Response
+  - 7) Today it is Thursday.After 132 days,it will be: </br>\n
+    ^ 1) Monday </br>\n
+    ^ 2) Sunday </br>\n
+    ^ 3) Wednesday </br>\n
+    ^ 4) Thursday </br>\n
+  ^  reply just the choice.{topic=technicaltest7}
+
+  + *
+  - I didn't get you. Can you use a number instead?
+
+
+< topic
+
+> topic technicaltest7
+
+    + #
+  * <star> >= 5 => Invalid Response
+  * <star> <= 0 => Invalid Response
+  - 8) A train 120 meters long is running with a speed of 60 km/hr. In what time will it pass a boy who is running at 6 km/hr in the direction opposite to that in which the train is going? </br>\n
+    ^ 1) 6.54 sec </br>\n
+    ^ 2) 44.32 sec </br>\n
+    ^ 3) 55 sec </br>\n
+    ^ 4) 30.2 sec </br>\n
+  ^  reply just the choice.{topic=technicaltest8}
+
+  + *
+  - I didn't get you. Can you use a number instead?
+
+
+< topic
+
+> topic technicaltest8
+
+    + #
+  * <star> >= 5 => Invalid Response
+  * <star> <= 0 => Invalid Response
+  - 9) Devesh can cover a certain distance in 1 hour 24 minutes by covering two-third of the distance at 6 km/hour and the rest at 7 km/hr. Calculate total distance. </br>\n
+  ^ 1) 8 km </br>\n
+  ^ 2) 9 km </br>\n
+  ^ 3) 6 km </br>\n
+  ^ 4) 7/5 km </br>\n
+  ^  reply just the choice.{topic=technicaltest9}
+
+  + *
+  - I didn't get you. Can you use a number instead?
+
+
+< topic
+
+> topic technicaltest9
+
+    + #
+  * <star> >= 5 => Invalid Response
+  * <star> <= 0 => Invalid Response
+ - 10) Find the H.C.F, if the numbers are in the ratio of 4 : 5 : 6 and their L.C.M. is 2400. </br>\n
+  ^ 1) 35 </br>\n
+  ^ 2) 20 </br>\n
+  ^ 3) 40 </br>\n
+  ^ 4) 67 </br>\n
+  ^  reply just the choice.{topic=finaltech}
+
+  + *
+  - I didn't get you. Can you use a number instead?
+
+
+< topic
+> topic finaltech
+
+    + #
+  * <star> >= 5 => Invalid Response
+  * <star> <= 0 => Invalid Response
+  - Now let's start with your Verbal test. </br>\n
+  ^ Say ready if you are.{topic=ready1}
+
+  + *
+  - I didn't get you. Can you use a number instead?
+
+
+< topic
+
+> topic ready1
+  
+  + ready [*]
+  - <bot currenttopic=verbal>1) Choose one of the following options that means the opposite of the given word; Copious: </br>\n
+^ 1) Reverse </br>\n
+^ 2) Scarce </br>\n
+^ 3) Abundant </br>\n
+^ 4) Short </br>\n
+  ^  reply just the choice.{topic=verbal1}
+
+  + [*] not ready [*]
+  - still waiting. Say ready.
+
+  + *
+  - Say ready.
+
+
+< topic
+
+> topic verbal1
+
+    + #
+  * <star> >= 5 => Invalid Response
+  * <star> <= 0 => Invalid Response
+  - 2) Choose one of the following options that means the same of the given word :Brief </br>\n
+  ^ 1) Partial </br>\n
+  ^ 2) Short </br>\n
+  ^ 3) Limited </br>\n
+  ^ 4) Little </br>\n
+  ^  reply just the choice.{topic=verbal2}
+
+  + *
+  - I didn't get you. Can you use a number instead?
+
+
+< topic
+
+> topic verbal2
+
+    + #
+  * <star> >= 5 => Invalid Response
+  * <star> <= 0 => Invalid Response
+  - 3) Correct Spellings </br>\n
+  ^ 1) Betterment </br>\n
+  ^ 2) Efficiant </br>\n
+  ^ 3) Employd </br>\n
+  ^ 4) Trainad </br>\n
+  ^  reply just the choice.{topic=verbal3}
+
+  + *
+  - I didn't get you. Can you use a number instead?
+
+
+< topic
+
+> topic verbal3
+
+    + #
+  * <star> >= 5 => Invalid Response
+  * <star> <= 0 => Invalid Response
+  - 4) Choose appropriate phrase to fill in the blanks : She lived ____ the expectations. </br>\n
+  ^ 1) as per </br>\n
+  ^ 2) up to </br>\n
+  ^ 3) on </br>\n
+  ^ 4) at </br>\n
+  ^  reply just the choice.{topic=verbal4}
+
+  + *
+  - I didn't get you. Can you use a number instead?
+
+
+< topic
+
+> topic verbal4
+
+    + #
+  * <star> >= 5 => Invalid Response
+  * <star> <= 0 => Invalid Response
+  - 5) Place words in appropriate sequence to form meaningful sentence :  </br>\n
+  ^  1.not     2.Maria     3.run     4.did     5.away </br>\n
+  ^ 1) 24153 </br>\n
+  ^ 2) 24135 </br>\n
+  ^ 3) 21354 </br>\n
+  ^ 4) 41235 </br>\n
+  ^  reply just the choice.{topic=verbal5}
+
+  + *
+  - I didn't get you. Can you use a number instead?
+
+
+< topic
+> topic verbal5
+
+    + #
+  * <star> >= 5 => Invalid Response
+  * <star> <= 0 => Invalid Response
+  - Sentence Correction </br>\n
+  ^ He was very tired as --he is working-- since 6 O' clock in the morning. </br>\n
+  ^ 1) he was working </br>\n
+  ^ 2) he had been working </br>\n
+  ^ 3) he has been working </br>\n
+  ^ 4) he will be working </br>\n
+  ^  reply just the choice.{topic=verbal6}
+
+  + *
+  - I didn't get you. Can you use a number instead?
+
+
+< topic
+> topic verbal6
+
+    + #
+  * <star> >= 5 => Invalid Response
+  * <star> <= 0 => Invalid Response
+  - 7) Today it is Thursday.After 132 days,it will be: </br>\n
+  ^ 1) Monday </br>\n
+  ^ 2) Sunday </br>\n
+  ^ 3) Wednesday </br>\n
+  ^ 4) Thursday </br>\n
+  ^  reply just the choice.{topic=verbal7}
+
+  + *
+  - I didn't get you. Can you use a number instead?
+
+
+< topic
+> topic verbal7
+
+    + #
+  * <star> >= 5 => Invalid Response
+  * <star> <= 0 => Invalid Response
+  - A train 120 meters long is running with a speed of 60 km/hr. In what time will it pass a boy who is running at 6 km/hr in the direction opposite to that in which the train is going? </br>\n
+  ^ 1) 6.54 sec </br>\n
+  ^ 2) 44.32 sec </br>\n
+  ^ 3) 55 sec </br>\n
+  ^ 4) 30.2 sec </br>\n
+  ^  reply just the choice.{topic=verbal8}
+
+  + *
+  - I didn't get you. Can you use a number instead?
+
+
+< topic
+> topic verbal8
+
+    + #
+  * <star> >= 5 => Invalid Response
+  * <star> <= 0 => Invalid Response
+  - 9) Devesh can cover a certain distance in 1 hour 24 minutes by covering two-third of the distance at 6 km/hour and the rest at 7 km/hr. Calculate total distance. </br>\n
+  ^ 1) 8 km </br>\n
+  ^ 2) 9 km </br>\n
+  ^ 3) 6 km </br>\n
+  ^ 4) 7/5 km </br>\n
+  ^  reply just the choice.{topic=verbal9}
+
+  + *
+  - I didn't get you. Can you use a number instead?
+
+
+< topic
+> topic verbal9
+
+    + #
+  * <star> >= 5 => Invalid Response
+  * <star> <= 0 => Invalid Response
+  - Find the H.C.F, if the numbers are in the ratio of 4 : 5 : 6 and their L.C.M. is 2400. </br>\n
+  ^ 1) 35 </br>\n
+  ^ 2) 20 </br>\n
+  ^ 3) 40 </br>\n
+  ^ 4) 67 </br>\n
+  ^  reply just the choice.{topic=verbal10}
+
+  + *
+  - I didn't get you. Can you use a number instead?
+
+
+< topic
+
+> topic verbal10
+
+    + #
+  * <star> >= 5 => Invalid Response
+  * <star> <= 0 => Invalid Response
+  - <bot currenttopic=done>Evaluating your result. </br>\n
+   ^ Say "show me the result" to see your result.{topic=final}
+
+  + *
+  - I didn't get you. Can you use a number instead?
+
+
+< topic
+
+> topic final
+
+  + [*] show [*] [me] [the] [*] result [*]
+  - this is the result
+
+  + *
+  - I didn't get you. Can you use a number instead?
+
+
+< topic
